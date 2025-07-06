@@ -56,7 +56,7 @@
    # Change this line:
    proxy_pass http://your-backend-url:8080;
    # To your actual backend URL:
-   proxy_pass https://your-backend-domain.com;
+   proxy_pass https://68.183.237.216;
    ```
 
 ### Step 3: Deploy the Application
