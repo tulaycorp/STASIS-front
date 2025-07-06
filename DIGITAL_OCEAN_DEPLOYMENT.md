@@ -20,11 +20,16 @@ ssh root@YOUR_DROPLET_IP
 # Update system
 sudo apt update && sudo apt upgrade -y
 
-# Install Docker
-sudo apt install docker.io docker-compose -y
+# Install Docker (Official Docker installation)
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
+
+# Install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # Install Nginx for SSL termination
 sudo apt install nginx certbot python3-certbot-nginx -y
