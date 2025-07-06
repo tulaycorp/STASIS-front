@@ -1,32 +1,36 @@
-# Multi-stage build for React frontend
-FROM node:18-alpine as build
+# Dockerfile
 
-# Set working directory
+# ---- Stage 1: Build the application ----
+FROM node:18-alpine AS builder
+
+# Set the working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install ALL dependencies (including devDependencies for the build)
+RUN npm ci
 
-# Copy source code
+# Copy the rest of the application source code
 COPY . .
 
-# Build the application
+# Build the application for production
 RUN npm run build
 
-# Production stage with Nginx
-FROM nginx:alpine
+# ---- Stage 2: Serve the application with Nginx ----
+FROM nginx:stable-alpine
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy the custom server configuration to the correct directory
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built application from build stage
+# The source path '/app/build' is standard for Create React App. 
+# Adjust if your build output is in a different folder (e.g., 'dist').
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
-# Start nginx
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
