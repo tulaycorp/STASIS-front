@@ -1,0 +1,604 @@
+/* ===== EXISTING CSS STYLES ===== */
+
+* {
+  box-sizing: border-box;
+}
+/* Dashboard Container */
+.dashboardContainer {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Main Content Area */
+.mainContent {
+  flex: 1;
+  position: fixed;
+  left: 280px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: clamp(16px, 2vw, 24px);
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.contentWrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    min-width: 0;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.breadcrumbLink {
+  color: #ef4444;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: #94a3b8;
+}
+
+.breadcrumbCurrent {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* Page Header */
+.pageHeader {
+  margin-bottom: 24px; /* Adjusted from 32px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Grades List Container */
+.gradesListContainer {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* List Header */
+.listHeader {
+  padding: 24px 32px;
+  border-bottom: 1px solid #e2e8f0;
+  background: white;
+}
+
+.listControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.listTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Academic Information Section */
+.academicInfo {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.academicItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.academicLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.academicValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.gpaValue {
+  color: #dc2626;
+  font-size: 18px;
+}
+
+.statusRegular {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusIrregular {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selectInput {
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.selectInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput {
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #374151;
+  transition: all 0.2s ease;
+  min-width: 250px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Table Container */
+.tableContainer {
+  overflow-x: auto;
+}
+
+.gradesTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.gradesTable thead {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.gradesTable th {
+  padding: 16px 24px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gradesTable td {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.gradesTable tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.gradesTable tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.gradesTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Cell Content */
+.courseCode {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: #ef4444;
+  font-size: 13px;
+  background-color: #fef2f2;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.courseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.courseName {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.courseSection {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.instructorName {
+  font-weight: 500;
+  color: #374151;
+}
+
+.creditUnits {
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+}
+
+.gradeScore {
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.semesterInfo {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Remarks Styling */
+.remarksBadge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+}
+
+.remarksPassed { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.remarksFailed { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.remarksProgress { background-color: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+
+/* Status Badges */
+.statusBadge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+}
+
+/* Table Footer */
+.tableFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background-color: white;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.tableInfo {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pageBtn {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 36px;
+}
+
+.pageBtn:hover:not(.disabled) { background-color: #f3f4f6; border-color: #9ca3af; }
+.pageBtn.active { background-color: #ef4444; color: white; border-color: #ef4444; }
+.pageBtn.disabled { opacity: 0.5; cursor: not-allowed; background-color: #f9fafb; }
+
+.semesterIndicator {
+  background-color: #fef2f2;
+  color: #ef4444;
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 20px);
+  border-radius: clamp(16px, 2vw, 24px);
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Student Content Wrapper - Grid container */
+.studentContentWrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 25px;
+  align-items: flex-start; /* Aligns items to the top */
+}
+
+.studentNavSection {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 0;
+  position: sticky;
+  top: 24px; /* Matches main content padding */
+}
+
+/* Sidebar header */
+.studentNavHeader {
+  padding: 18px 20px;
+  border-bottom: 1px solid #f1f3f4;
+  background: #fafbfc;
+  border-radius: 16px 16px 0 0;
+}
+
+.studentNavTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0 0 8px 0;
+}
+
+.semesterCurrentInfo {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Semester list container */
+.studentNavList {
+  padding: 12px 0;
+  max-height: 30vh; /* Adjusted for better screen fit */
+  overflow-y: auto;
+}
+
+/* Individual semester items */
+.studentNavItem {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: #495057;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.studentNavItem:hover {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+/* ===== UPDATED ACTIVE NAV ITEM ===== */
+.studentNavItemActive {
+  color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  font-weight: 600; /* Increased font weight for active item */
+  border-radius: 6px;
+  margin: 4px 12px;
+  padding-left: 17px; /* Adjusted padding for active item */
+  border-left: 3px solid #ef4444;
+}
+
+.studentNavIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Semester info styling */
+.semesterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.semesterMain {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.semesterYear {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+/* Sidebar actions section */
+.studentNavActions {
+  padding: 12px 20px;
+  border-top: 1px solid #f1f3f4;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+/* ===== UPDATED BUTTON STYLES ===== */
+.studentBtnAddSection {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.studentBtnAddSection:hover {
+  background-color: #c82333;
+}
+
+/* Sidebar info section */
+.studentNavInfo {
+  padding: 12px 20px;
+}
+
+.studentNavInfoItem {
+  margin-bottom: 12px;
+}
+
+.studentNavInfoItem:last-child {
+  margin-bottom: 0;
+}
+
+.studentNavInfoLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.studentNavInfoValue {
+  font-size: 13px;
+  font-weight: 500;
+  color: #212529;
+}
+
+
+/* ===== RESPONSIVE DESIGN UPDATES ===== */
+@media (max-width: 1200px) {
+  .studentContentWrapper {
+    grid-template-columns: 240px 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .studentContentWrapper {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .studentNavSection {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* Existing responsive styles */
+@media (max-width: 768px) {
+  .contentWrapper { padding: 16px; }
+  .listControls { flex-direction: column; align-items: stretch; gap: 16px; }
+  .controls { flex-direction: column; gap: 12px; }
+  .searchInput { min-width: 100%; }
+  .academicInfo { flex-direction: column; align-items: stretch; gap: 12px; }
+  .academicItem { justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+  .academicItem:last-child { border-bottom: none; }
+  .tableFooter { flex-direction: column; gap: 16px; text-align: center; }
+  .pageTitle { font-size: 24px; }
+  .listTitle { font-size: 20px; }
+  .studentNavList { max-height: 250px; }
+  .studentNavItem { padding: 12px 16px; }
+  .studentNavHeader,
+  .studentNavActions,
+  .studentNavInfo {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gradesTable { font-size: 12px; }
+  .gradesTable th, .gradesTable td { padding: 12px 8px; }
+  .courseName { font-size: 13px; }
+  .courseSection { font-size: 11px; }
+  .remarksBadge { padding: 4px 8px; font-size: 10px; min-width: 60px; }
+}
+
+@media print {
+  .semesterSidebar {
+    display: none;
+  }
+}

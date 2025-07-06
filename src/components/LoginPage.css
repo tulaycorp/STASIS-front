@@ -1,0 +1,234 @@
+/* .body {
+    background: url('../assets/images/login-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+} */
+.login-page {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Limit maximum width */
+    min-height: 700px; /* Ensure minimum height */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Rounded corners for the main container */
+    overflow: hidden; /* Important for rounded corners with image */
+    margin: 20px; /* Add some margin around the box */
+  }
+  
+  /* Left Side (Image) */
+  .login-image-section {
+    flex: 1; /* Take up available space */
+    min-width: 55%; /* Ensure it takes a good portion */
+    /* Ensure you have library-bg.jpg in frontend/src/assets/images/ */
+    background-image: url('../assets/images/library-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative; /* For positioning overlay content */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes logo to top, text to bottom */
+    padding: 30px;
+    color: white;
+  }
+  
+  /* Image Overlay */
+  .login-image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Subtle dark overlay */
+    z-index: 1;
+  }
+  
+  /* Logo */
+  .login-logo {
+      position: relative; /* Place above the overlay */
+      z-index: 2;
+      width: 80px; /* Adjust size as needed */
+      height: auto; /* Maintain aspect ratio */
+      padding: 10px;
+      border-radius: 5px; /* Slightly rounded corners for the shield */
+  }
+  .login-logo img { /* If your logo is an image tag */
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure logo fits */
+  }
+  
+  
+  /* Text on Image */
+  .login-image-text {
+    position: relative; /* Place above the overlay */
+    z-index: 2;
+  }
+  
+  .login-image-text h2 {
+    font-family: var(--font-sans-serif);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  .login-image-text p {
+    font-family: var(--font-sans-serif);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Right Side (Form/Selection) */
+  .login-form-section {
+    flex-basis: 45%; /* Fixed or percentage basis */
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    background-color: #fff; /* Ensure white background */
+  }
+  
+  .login-form-section h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    color: var(--color-primary-text);
+  }
+  
+  .login-form-section .continue-as-label {
+    font-family: var(--font-sans-serif);
+    font-size: 0.9rem;
+    color: var(--color-secondary-text);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Role Selection Buttons */
+  .role-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes arrow to the right */
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    background-color: var(--color-button-bg);
+    text-decoration: none; /* Remove underline if using <a> tags */
+    color: var(--color-primary-text); /* Ensure text color */
+    width: 100%; /* Make buttons take full width */
+    text-align: left; /* Align text left */
+  }
+  
+  .role-button:hover {
+    background-color: var(--color-button-hover-bg);
+    border-color: #adadad;
+  }
+  
+  .role-button-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .role-button-icon {
+    font-size: 1.5rem; /* Icon size */
+    margin-right: 15px;
+    color: var(--color-secondary-text); /* Icon color */
+    display: flex; /* Helps vertical alignment */
+    align-items: center;
+  }
+  
+  .role-button-text {
+    font-family: var(--font-sans-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .role-button-arrow {
+    font-size: 1.2rem;
+    color: var(--color-secondary-text);
+  }
+  
+  /* Footer Links */
+  .login-footer {
+    margin-top: auto; /* Push footer to the bottom */
+    padding-top: 30px; /* Space above footer */
+    text-align: center;
+  }
+  
+  .login-footer a {
+    font-family: var(--font-sans-serif);
+    font-size: 0.85rem;
+    color: var(--color-link);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: text-decoration 0.2s ease;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .login-page {
+      flex-direction: column;
+      max-width: 500px; /* Adjust width for single column */
+      min-height: auto; /* Allow height to adjust */
+    }
+  
+    .login-image-section {
+      min-height: 250px; /* Fixed height for image on small screens */
+      min-width: 100%; /* Take full width */
+      padding: 20px;
+    }
+  
+    .login-image-text h2 {
+      font-size: 1.8rem;
+    }
+    .login-image-text p {
+      font-size: 1rem;
+    }
+  
+    .login-logo {
+        width: 60px;
+    }
+  
+    .login-form-section {
+      padding: 30px 40px;
+      flex-basis: auto; /* Reset basis */
+    }
+  
+     .login-form-section h1 {
+         font-size: 3rem;
+         margin-bottom: 20px;
+     }
+  
+    .login-footer {
+        margin-top: 30px; /* Ensure space remains */
+    }
+  }
+  
+  @media (max-width: 576px) {
+     .login-form-section {
+      padding: 25px 20px;
+    }
+     .login-form-section h1 {
+         font-size: 2.5rem;
+     }
+     .role-button {
+         padding: 12px 15px;
+     }
+     .role-button-icon {
+         font-size: 1.3rem;
+         margin-right: 10px;
+     }
+     .role-button-text {
+         font-size: 1rem;
+     }
+  }

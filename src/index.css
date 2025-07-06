@@ -1,0 +1,80 @@
+/* Basic Reset & Font Setup */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Light background for the overall page */
+  background-image: url('./assets/images/login-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box; /* Easier layout calculations */
+}
+
+/* Define font variables if needed */
+:root {
+  --font-serif: 'Georgia', 'Times New Roman', Times, serif;
+  --font-sans-serif: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --color-primary-text: #333;
+  --color-secondary-text: #555;
+  --color-link: #d9534f; /* Example red color */
+  --color-border: #ccc;
+  --color-button-bg: #fff;
+  --color-button-hover-bg: #f9f9f9;
+}
+
+/* Style for the main App container if needed,
+   otherwise body styles handle centering the content */
+.App {
+    width: 100%;
+    display: flex; /* Helps if App needs to manage layout */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add global container and layout styles */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 256px; /* Match sidebar width */
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Remove the !important flags and position overrides */
+.admin-main-content,
+.settings-main-content {
+  /* Keep only the base styles */
+  margin-left: 256px;
+  padding: 20px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 992px) {
+  .main-content,
+  .admin-main-content,
+  .settings-main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
