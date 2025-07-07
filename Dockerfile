@@ -20,7 +20,6 @@ RUN npm run build
 FROM nginx:alpine
 
 # Install certbot for SSL certificates
-RUN apk add --no-cache certbot certbot-nginx
 
 # Remove default nginx config
 RUN rm /etc/nginx/conf.d/default.conf
@@ -32,11 +31,9 @@ COPY nginx.conf /etc/nginx/conf.d/
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Create directory for SSL certificates
-RUN mkdir -p /etc/letsencrypt
 
 # Copy SSL setup script
 COPY ssl-setup.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/ssl-setup.sh
 
 # Expose ports
 EXPOSE 80 443
