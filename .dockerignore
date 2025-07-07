@@ -109,4 +109,4 @@ Dockerfile
 
 # Deployment scripts
 deploy.sh
-ssl-setup.sh
+# ssl-setup.sh - needed in container
