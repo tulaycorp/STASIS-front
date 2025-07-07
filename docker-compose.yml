@@ -13,17 +13,12 @@ services:
       - "443:443"
     volumes:
       # SSL certificates
-      - ./ssl/certbot/conf:/etc/letsencrypt
-      - ./ssl/certbot/www:/var/www/certbot
       # Nginx logs
       - ./logs/nginx:/var/log/nginx
     environment:
-      - DOMAIN=stasis-edu.tech
       - EMAIL=admin@stasis-edu.tech
     networks:
       - stasis-network
-    depends_on:
-      - certbot
 
   # Certbot for SSL certificate management
   # certbot:
