@@ -1,5 +1,5 @@
 # Multi-stage build for React frontend with Nginx
-FROM node:20-alpine as build
+FROM node:20-alpine as builder
 
 # Set working directory
 WORKDIR /app
