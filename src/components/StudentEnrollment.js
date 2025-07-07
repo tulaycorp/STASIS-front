@@ -978,7 +978,7 @@ function StudentEnrollment(props) {
                 <h2 className="list-title">
                   {selectedTab === 'available' ? 'Available Courses' : 'My Enrollments'}
                 </h2>
-               <div className="student-info">=
+               <div className="student-info">
               <p><strong>Program:</strong> {studentData?.program?.programName || 'N/A'}</p>
               <p><strong>Year Level:</strong> {studentData?.year_level}</p>
               </div>  

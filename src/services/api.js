@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with base configuration for session-based auth
 const api = axios.create({
-  baseURL: 'http://68.183.237.216:8080/api',
+  baseURL: 'http://localhost:8080/api',
   withCredentials: true, // CRITICAL - enables session cookies for Spring Security
   timeout: 15000,
   headers: {

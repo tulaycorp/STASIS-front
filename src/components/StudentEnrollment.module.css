@@ -229,7 +229,18 @@ body {
   color: #374151;
   background-color: white;
   min-width: 150px;
+  max-width: 400px; /* Increased max width for dropdown */
   transition: all 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-container {
+  overflow-x: visible; /* Allow dropdown to overflow */
+  background-color: white;
+  position: relative; /* Ensure dropdown can overflow */
+  z-index: 9999; /* Layer dropdown topmost */
 }
 
 .select-input:focus {

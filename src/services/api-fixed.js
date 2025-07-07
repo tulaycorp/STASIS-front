@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Configure axios for session-based authentication
 const api = axios.create({
-  baseURL: 'http://68.183.237.216:8080',
+  baseURL: 'http://localhost:8080',
   withCredentials: true, // CRITICAL - enables session cookies
   timeout: 15000,
   headers: {

@@ -28,8 +28,7 @@ const AdminDashboard = () => {
       studentGrowth: '',
       facultyGrowth: '',
       courseGrowth: ''
-    },
-    recentActivities: []
+    }
   });
 
   // Fetch all necessary data on component mount
@@ -681,22 +680,6 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              {/* Recent Activities */}
-              <div className="dashboard-section-card">
-                <div className="dashboard-section-header">
-                  <h2 className="dashboard-section-title">Recent Activities</h2>
-                </div>
-                <div className="dashboard-activity-list">
-                  {dashboardData.recentActivities.map((activity) => (
-                    <div key={activity.id} className="dashboard-activity-item">
-                      <div className="dashboard-activity-content">
-                        <div className="dashboard-activity-message">{activity.message}</div>
-                        <div className="dashboard-activity-time">{activity.time}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 

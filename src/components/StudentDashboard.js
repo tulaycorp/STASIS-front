@@ -8,9 +8,7 @@ const StudentDashboard = () => {
   const { studentData, loading: studentLoading, error: studentError, getStudentName, getUserInfo } = useStudentData();
   const studentId = studentData?.id;
 
-  const [dashboardData, setStudentDashboardData] = useState({
-    recentActivities: []
-  });
+  const [dashboardData, setStudentDashboardData] = useState({});
 
   // Schedule state
   const [scheduleList, setScheduleList] = useState([]);
@@ -295,22 +293,6 @@ const StudentDashboard = () => {
                 </div>
               </div>
 
-              {/* Recent Activities */}
-              <div className="dashboard-section-card">
-                <div className="dashboard-section-header">
-                  <h2 className="dashboard-section-title">Recent Activities</h2>
-                </div>
-                <div className="dashboard-activity-list">
-                  {dashboardData.recentActivities.map((activity) => (
-                    <div key={activity.id} className="dashboard-activity-item">
-                      <div className="dashboard-activity-content">
-                        <div className="dashboard-activity-message">{activity.message}</div>
-                        <div className="dashboard-activity-time">{activity.time}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -323,11 +305,11 @@ const StudentDashboard = () => {
               </div>
               <div className="dashboard-calendar-content">
                 <div className="dashboard-calendar-month" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                  <button className="btn btn-secondary" style={{ minWidth: 0, padding: '4px 10px' }} onClick={goToPrevMonth}>&lt;</button>
+                  <button className="btn btn-secondary" style={{ minWidth: 0, padding: '4px 10px' }} onClick={goToPrevMonth}>‹</button>
                   <span>
                     {new Date(calendarYear, calendarMonth).toLocaleString('default', { month: 'long', year: 'numeric' })}
                   </span>
-                  <button className="btn btn-secondary" style={{ minWidth: 0, padding: '4px 10px' }} onClick={goToNextMonth}>&gt;</button>
+                  <button className="btn btn-secondary" style={{ minWidth: 0, padding: '4px 10px' }} onClick={goToNextMonth}>›</button>
                 </div>
                 <div className="dashboard-calendar-grid">
                   {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) => (
