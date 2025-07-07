@@ -12,30 +12,32 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      # SSL certificates
-      - ./ssl/certbot/conf:/etc/letsencrypt
-      - ./ssl/certbot/www:/var/www/certbot
       # Nginx logs
       - ./logs/nginx:/var/log/nginx
+      # Certbot challenge directory
+      - ./ssl/certbot/www:/var/www/certbot
     environment:
-      - DOMAIN=stasis-edu.tech
       - EMAIL=admin@stasis-edu.tech
     networks:
       - stasis-network
-    depends_on:
-      - certbot
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Certbot for SSL certificate management
-  certbot:
-    image: certbot/certbot
-    container_name: stasis-certbot
-    restart: "no"
-    volumes:
-      - ./ssl/certbot/conf:/etc/letsencrypt
-      - ./ssl/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    networks:
-      - stasis-network
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: stasis-certbot
+  #   restart: "no"
+  #   volumes:
+  #     - ./ssl/certbot/conf:/etc/letsencrypt
+  #     - ./ssl/certbot/www:/var/www/certbot
+  #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  #   networks:
+  #     - stasis-network
 
   # Watchtower for automatic updates (optional)
   watchtower:
