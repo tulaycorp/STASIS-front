@@ -27,7 +27,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy built application from build stage
 # The source path '/app/build' is standard for Create React App. 
 # Adjust if your build output is in a different folder (e.g., 'dist').
-COPY --from=builder /app/builder /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
