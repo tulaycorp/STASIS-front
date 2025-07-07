@@ -1,8 +1,16 @@
 import axios from 'axios';
 
+// Determine base URL based on environment
+const getBaseURL = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return process.env.REACT_APP_API_BASE_URL || 'https://stasis-edu.tech/api';
+  }
+  return 'http://68.183.237.216:8080/api';
+};
+
 // Create axios instance with base configuration for session-based auth
 const api = axios.create({
-  baseURL: 'http://68.183.237.216:8080/api',
+  baseURL: getBaseURL(),
   withCredentials: true, // CRITICAL - enables session cookies for Spring Security
   timeout: 15000,
   headers: {
@@ -586,8 +594,12 @@ export const authAPI = {
   // Login user - using fetch for better session cookie handling
   login: async (loginData) => {
     console.log('Calling login API with data:', loginData);
+    const loginURL = process.env.NODE_ENV === 'production' 
+      ? 'https://stasis-edu.tech/api/auth/login'
+      : 'http://68.183.237.216:8080/api/auth/login';
+    
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch(loginURL, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'
@@ -622,8 +634,12 @@ export const authAPI = {
   // Logout user
   logout: async () => {
     console.log('Calling logout API...');
+    const logoutURL = process.env.NODE_ENV === 'production' 
+      ? 'https://stasis-edu.tech/api/auth/logout'
+      : 'http://68.183.237.216:8080/api/auth/logout';
+    
     try {
-      await fetch('http://localhost:8080/api/auth/logout', {
+      await fetch(logoutURL, {
         method: 'POST',
         credentials: 'include'
       });
@@ -646,8 +662,12 @@ export const authAPI = {
   // Check authentication status
   checkAuth: async () => {
     console.log('Calling auth check API...');
+    const checkURL = process.env.NODE_ENV === 'production' 
+      ? 'https://stasis-edu.tech/api/auth/check'
+      : 'http://68.183.237.216:8080/api/auth/check';
+    
     try {
-      const response = await fetch('http://localhost:8080/api/auth/check', { 
+      const response = await fetch(checkURL, { 
         credentials: 'include' 
       });
       return { data: { authenticated: response.ok } };

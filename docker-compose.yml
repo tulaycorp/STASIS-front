@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # STASIS Frontend with Nginx
+  stasis-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stasis-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # SSL certificates
+      - ./ssl/certbot/conf:/etc/letsencrypt
+      - ./ssl/certbot/www:/var/www/certbot
+      # Nginx logs
+      - ./logs/nginx:/var/log/nginx
+    environment:
+      - DOMAIN=stasis-edu.tech
+      - EMAIL=admin@stasis-edu.tech
+    networks:
+      - stasis-network
+    depends_on:
+      - certbot
+
+  # Certbot for SSL certificate management
+  certbot:
+    image: certbot/certbot
+    container_name: stasis-certbot
+    restart: "no"
+    volumes:
+      - ./ssl/certbot/conf:/etc/letsencrypt
+      - ./ssl/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    networks:
+      - stasis-network
+
+  # Watchtower for automatic updates (optional)
+  watchtower:
+    image: containrrr/watchtower
+    container_name: stasis-watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=3600
+      - WATCHTOWER_INCLUDE_STOPPED=true
+    networks:
+      - stasis-network
+
+networks:
+  stasis-network:
+    driver: bridge
+
+volumes:
+  ssl_certs:
+  nginx_logs:
