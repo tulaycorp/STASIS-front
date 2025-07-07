@@ -33,7 +33,6 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # Create directory for SSL certificates
 
 # Copy SSL setup script
-COPY ssl-setup.sh /usr/local/bin/
 
 # Expose ports
 EXPOSE 80 443
