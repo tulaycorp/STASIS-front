@@ -121,55 +121,55 @@ EOF
 "
 
 # Request SSL certificate
-docker-compose run --rm certbot certonly \
-    --webroot \
-    --webroot-path=/var/www/certbot \
-    --email $EMAIL \
-    --agree-tos \
-    --no-eff-email \
-    -d $DOMAIN \
-    -d www.$DOMAIN
+# docker-compose run --rm certbot certonly \
+#     --webroot \
+#     --webroot-path=/var/www/certbot \
+#     --email $EMAIL \
+#     --agree-tos \
+#     --no-eff-email \
+#     -d $DOMAIN \
+#     -d www.$DOMAIN
 
-if [ $? -eq 0 ]; then
-    print_success "SSL certificate obtained successfully!"
+# if [ $? -eq 0 ]; then
+#     print_success "SSL certificate obtained successfully!"
     
-    # Restore the full nginx configuration
-    print_status "Updating nginx configuration with SSL..."
-    docker-compose exec stasis-frontend sh -c "
-        # Remove temporary config
-        rm -f /etc/nginx/conf.d/temp.conf
+#     # Restore the full nginx configuration
+#     print_status "Updating nginx configuration with SSL..."
+#     docker-compose exec stasis-frontend sh -c "
+#         # Remove temporary config
+#         rm -f /etc/nginx/conf.d/temp.conf
         
-        # Test the main configuration
-        nginx -t && nginx -s reload
-    "
+#         # Test the main configuration
+#         nginx -t && nginx -s reload
+#     "
     
-    if [ $? -eq 0 ]; then
-        print_success "Nginx configuration updated successfully!"
-    else
-        print_error "Failed to update nginx configuration"
-        exit 1
-    fi
-else
-    print_error "Failed to obtain SSL certificate"
-    print_warning "The site will run on HTTP only"
-fi
+#     if [ $? -eq 0 ]; then
+#         print_success "Nginx configuration updated successfully!"
+#     else
+#         print_error "Failed to update nginx configuration"
+#         exit 1
+#     fi
+# else
+#     print_error "Failed to obtain SSL certificate"
+#     print_warning "The site will run on HTTP only"
+# fi
 
-# Final health check
-print_status "Performing health checks..."
+# # Final health check
+# print_status "Performing health checks..."
 
-# Check if the site is accessible
-sleep 5
-if curl -f -s http://$DOMAIN/health > /dev/null; then
-    print_success "HTTP health check passed!"
-else
-    print_warning "HTTP health check failed"
-fi
+# # Check if the site is accessible
+# sleep 5
+# if curl -f -s http://$DOMAIN/health > /dev/null; then
+#     print_success "HTTP health check passed!"
+# else
+#     print_warning "HTTP health check failed"
+# fi
 
-if curl -f -s -k https://$DOMAIN/health > /dev/null; then
-    print_success "HTTPS health check passed!"
-else
-    print_warning "HTTPS health check failed (SSL may still be setting up)"
-fi
+# if curl -f -s -k https://$DOMAIN/health > /dev/null; then
+#     print_success "HTTPS health check passed!"
+# else
+#     print_warning "HTTPS health check failed (SSL may still be setting up)"
+# fi
 
 # Display deployment information
 echo ""
