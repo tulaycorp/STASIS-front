@@ -26,16 +26,16 @@ services:
       - certbot
 
   # Certbot for SSL certificate management
-  certbot:
-    image: certbot/certbot
-    container_name: stasis-certbot
-    restart: "no"
-    volumes:
-      - ./ssl/certbot/conf:/etc/letsencrypt
-      - ./ssl/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    networks:
-      - stasis-network
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: stasis-certbot
+  #   restart: "no"
+  #   volumes:
+  #     - ./ssl/certbot/conf:/etc/letsencrypt
+  #     - ./ssl/certbot/www:/var/www/certbot
+  #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  #   networks:
+  #     - stasis-network
 
   # Watchtower for automatic updates (optional)
   watchtower:
