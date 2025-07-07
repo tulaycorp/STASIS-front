@@ -12,13 +12,20 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      # SSL certificates
       # Nginx logs
       - ./logs/nginx:/var/log/nginx
+      # Certbot challenge directory
+      - ./ssl/certbot/www:/var/www/certbot
     environment:
       - EMAIL=admin@stasis-edu.tech
     networks:
       - stasis-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Certbot for SSL certificate management
   # certbot:
