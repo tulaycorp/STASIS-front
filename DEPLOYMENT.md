@@ -21,7 +21,7 @@
    ```bash
    sudo apt update
    sudo apt install docker.io docker-compose
-   sudo systemctl start docker
+  s
    sudo systemctl enable docker
    sudo usermod -aG docker $USER
    ```

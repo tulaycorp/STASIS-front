@@ -55,7 +55,6 @@ chmod +x deploy.sh
 # Deploy the application
 ./deploy.sh
 ```
-
 ### 4. Configure Nginx for SSL and Domain
 
 **Create Nginx configuration:**
