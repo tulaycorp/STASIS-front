@@ -16,7 +16,7 @@ NC='\033[0m' # No Color
 # Configuration
 IMAGE_NAME="stasis-frontend"
 CONTAINER_NAME="stasis-frontend-container"
-PORT=80
+PORT=3000
 
 echo -e "${YELLOW}📦 Building Docker image...${NC}"
 docker build -t $IMAGE_NAME .
